@@ -94,7 +94,6 @@ public class CouchResponse {
 		log.debug(toString());
 	}
 
-	@Override
 	/**
 	 * A better toString for this object... can be very verbose though.
 	 */
@@ -157,7 +156,8 @@ public class CouchResponse {
 	 * @return
 	 */
 	public String getHeader(String key) {
-		for (Header h: headers) {
+		for (int i = 0; i < headers.length; i++) {
+		    Header h = headers[i];
 			if (h.getName().equals(key)) {
 				return h.getValue();
 			}

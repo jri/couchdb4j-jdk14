@@ -98,7 +98,7 @@ public class Database {
    */
   public ViewResults getAllDocumentsWithCount(int count) {
     View v = new View("_all_docs");
-    v.setCount(count);
+    v.setCount(new Integer(count));
     return view(v, false);
   }
 	

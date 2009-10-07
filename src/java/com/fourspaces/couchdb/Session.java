@@ -164,11 +164,11 @@ public class Session {
 	 * Retrieves a list of all database names from the server
 	 * @return
 	 */
-	public List<String> getDatabaseNames() {
+	public List getDatabaseNames() {
 		CouchResponse resp = get("_all_dbs");
 		JSONArray ar = resp.getBodyAsJSONArray();
 		
-		List<String> dbs = new ArrayList<String>(ar.size());
+		List dbs = new ArrayList(ar.size());
 		for (int i=0 ; i< ar.size(); i++) {
 			dbs.add(ar.getString(i));
 		}
