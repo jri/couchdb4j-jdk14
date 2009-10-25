@@ -327,6 +327,11 @@ public class Database {
 		}
 		return doc;
 	}
+
+	public byte[] getAttachment(String docID, String attachment) throws IOException {
+		CouchResponse resp = session.get(name + "/" + URLEncoder.encode(docID, "utf-8") + "/" + attachment);
+		return resp.getBody();
+	}
 	
 	/**
 	 * Deletes a document

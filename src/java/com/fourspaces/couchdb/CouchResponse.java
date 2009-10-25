@@ -42,6 +42,7 @@ public class CouchResponse {
 	Log log = LogFactory.getLog(CouchResponse.class);
 	
 	private String body;
+	private byte[] bodyBytes;
 	private String path;
 	private Header[] headers;
 	private int statusCode;
@@ -62,8 +63,9 @@ public class CouchResponse {
 	 */
 	CouchResponse(HttpMethod method) throws IOException {
 		methodName=method.getName();
-    headers = method.getResponseHeaders();
+		headers = method.getResponseHeaders();
 		body = method.getResponseBodyAsString();
+		bodyBytes = method.getResponseBody();
 		
 		path = method.getPath();
 		if (method.getQueryString()!=null && !method.getQueryString().equals("")) {
@@ -148,6 +150,10 @@ public class CouchResponse {
 			return null;
 		}
 		return JSONObject.fromObject(body);
+	}
+
+	public byte[] getBody() {
+		return bodyBytes;
 	}
 
 	/**

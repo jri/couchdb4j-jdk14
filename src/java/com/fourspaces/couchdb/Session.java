@@ -363,11 +363,11 @@ public class Session {
 			httpClient.executeMethod(method);
 			lastResponse = new CouchResponse(method);
 		} catch (HttpException e) {
-      log.error(ExceptionUtils.getStackTrace(e));
+			log.error(ExceptionUtils.getStackTrace(e));
 		} catch (IOException e) {
 			log.error(ExceptionUtils.getStackTrace(e));
 		} finally {
-			  method.releaseConnection();
+			method.releaseConnection();
 		}
 		return lastResponse;	
 	}
